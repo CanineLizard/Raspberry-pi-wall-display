@@ -3,12 +3,19 @@
   <head>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <title>Traffic Layer</title>
     <style>
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
       #map {
-        height:100%;
+        height:50%;
+        width: 50%;
+
+      }
+      #weather {
+        height: 25%;
+        width: 25%;
       }
       /* Optional: Makes the sample page fill the window. */
       html, body {
@@ -23,7 +30,7 @@
     <script>
       function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 11,
+          zoom: 10.3,
           center: {lat: 35.2061611, lng: -80.833604}
         });
 
@@ -32,7 +39,23 @@
       }
     </script>
     <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap">
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5UtUGCE-C21kMIWu4SZ_KbEs0i50tJP4&callback=initMap">
+    </script>
+
+    <div id = "weather"></div>
+    <script type = "text/javascript" language = "javascript">
+      $.ajax({
+        url: 'http://api.weatherstack.com/current',
+          data: {
+            access_key: '3417de76cb1ecb98b23624709310f884',
+            query: 'Charlotte',
+            units: 'f'
+          },
+          dataType: 'json',
+          success: function(apiResponse) {
+            console.log(`Current temperature in ${apiResponse.location.name} is ${apiResponse.current.temperature}F`);
+          }
+        });
     </script>
   </body>
 </html>
