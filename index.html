@@ -26,6 +26,8 @@
     </style>
   </head>
   <body>
+    <div class="weatherDiv">hello world</div>
+    
     <div id="map"></div>
     <script>
       function initMap() {
@@ -37,7 +39,9 @@
         var trafficLayer = new google.maps.TrafficLayer();
         trafficLayer.setMap(map);
       }
+      
     </script>
+    
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5UtUGCE-C21kMIWu4SZ_KbEs0i50tJP4&callback=initMap">
     </script>
@@ -53,7 +57,9 @@
           },
           dataType: 'json',
           success: function(apiResponse) {
-            console.log(`Current temperature in ${apiResponse.location.name} is ${apiResponse.current.temperature}F`);
+            console.log("Success");
+            $("div.weatherDiv").html(`<h3>Current temperature in ${apiResponse.location.name} is ${apiResponse.current.temperature}F</h3>`);
+            console.log("I am past that point");
           }
         });
     </script>
