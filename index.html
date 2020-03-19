@@ -23,6 +23,11 @@
         margin: 0;
         padding: 0;
       }
+
+      .weatherDiv {
+        font:message-box;
+        font-style: italic;
+      }
     </style>
   </head>
   <body>
@@ -58,7 +63,7 @@
           dataType: 'json',
           success: function(apiResponse) {
             console.log("Success");
-            $("div.weatherDiv").html(`<h3>Current temperature in ${apiResponse.location.name} is ${apiResponse.current.temperature}F</h3>`);
+            $("div.weatherDiv").html(`<p>Current temperature in ${apiResponse.location.name} is ${apiResponse.current.temperature}F</p>`);
             console.log("I am past that point");
           }
         });
